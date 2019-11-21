@@ -6,7 +6,7 @@ import org.eclipse.californium.core.CoapResponse;
 import org.eclipse.californium.core.Utils;
 
 
-public class GETRequest {
+public class ClientCoAP {
 
 	public static void main(String args[]) {
 		
