@@ -6,14 +6,18 @@
 #include "net/ip/uip-debug.h"
 #include "contiki-net.h"
 #include "rest-engine.h"
+#include <stdbool.h>
 
 //make connect-router-cooja PREFIX="abcd::1/64"
+
+bool debug = false; //true per attivare delle printf() di debug
 
 static int value = 21; //21 is the starting value
 int TIME; //globale perchè contiki del cazzo me lo resett
 const int VAR_RANGE = 3; //range di variazione della temperatura (in gradi)
 
 void event_handler();
+void get_handler(void*, void*, uint8_t*, uint16_t, int32_t*);
 
 EVENT_RESOURCE(evt_resource, "title=\"Temperature\";rt=\"temperature\";obs", get_handler, NULL, NULL, NULL, event_handler);
 
@@ -24,36 +28,15 @@ void event_handler()
 
 void get_handler(void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
-	unsigned int accept = -1;
-	REST.get_header_accept(request, &accept);
 
-//PER ORA COPPER VEDE SOLO TEXT PLAIN, DOVREBBE USARE SOLO JSON
-	if(accept == -1 || accept == REST.type.TEXT_PLAIN)
-	{
-		sprintf((char *) buffer, "Value: %d", value);
-		REST.set_header_content_type(response, REST.type.TEXT_PLAIN);
-		REST.set_response_payload(response, buffer, strlen((char *) buffer));
-
-	}
-	else if(accept == REST.type.APPLICATION_XML)
-	{
-		sprintf((char *) buffer, "<Value>\"%d\"</Value>", value);
-		REST.set_header_content_type(response, REST.type.APPLICATION_XML);
-		REST.set_response_payload(response, buffer, strlen((char *) buffer));
-	}
-	else if(accept == REST.type.APPLICATION_JSON)
-	{
-		sprintf((char *) buffer, "{'Value':%d}", value);
-		REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
-		REST.set_response_payload(response, buffer, strlen((char *) buffer));
-	}
-	else
-	{
-		const char *msg = "Bad content type: Supporting JSON.";
-		memcpy((char *) buffer, msg, strlen(msg)); 
-		REST.set_response_status(response, REST.status.NOT_ACCEPTABLE);
-		REST.set_response_payload(response, buffer, strlen((char *) buffer));
-	}
+	sprintf((char *) buffer, "{'temperature':%d}", value); //volendo si può anche aggiungere il parametro JSON { 'scale':'Celsius' }
+	REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
+	REST.set_response_payload(response, buffer, strlen((char *) buffer));
+	
+	/*const char *msg = "Bad content type: Supporting JSON.";
+	memcpy((char *) buffer, msg, strlen(msg)); 
+	REST.set_response_status(response, REST.status.NOT_ACCEPTABLE);
+	REST.set_response_payload(response, buffer, strlen((char *) buffer));*/
 }
 
 PROCESS(temperature_node, "Temperature-sensing Process");
@@ -85,8 +68,8 @@ PROCESS_THREAD(temperature_node, ev, data)
 		PROCESS_WAIT_EVENT();
 
 		if(etimer_expired(&et))
-		{  
-			printf("Timer expired after %d seconds.\n", TIME);          
+		{
+			if(debug) printf("DEBUG: Timer expired after %d seconds.\n", TIME);          
 			//1) randomly choose if there has been a variation (33% probability)
 			if((TIME % 2) == 0)
 			{
@@ -102,9 +85,9 @@ PROCESS_THREAD(temperature_node, ev, data)
 					//trigger the event to notify observers
 					evt_resource.trigger();
 				}
-				else printf("DEBUG: variazione = 0\n"); 
+				else if(debug) printf("DEBUG: variazione = 0\n"); 
 			}
-			else printf("...\n");
+			else if(debug) printf("...\n");
 		}
 		   //reset random timer
 		    TIME = ((random_rand() % 10) +1);
