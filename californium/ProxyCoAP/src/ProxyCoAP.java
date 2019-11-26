@@ -13,31 +13,43 @@ import org.eclipse.californium.core.CoapResponse;
 
 public class ProxyCoAP extends CoapServer {
     
-    /*
-     * Application entry point.
-     */
-    public static void main (String[] args) {
-        
-        try {
-            
-            // create server
-            ProxyCoAP server = new ProxyCoAP();
-            server.start();
-            
-        } catch (SocketException e) {
-            
-            System.err.println("Failed to initialize server: " + e.getMessage());
-        }
-    }
+    private String proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
+    private CoapClient resource;
     
     /*
-     * Constructor for a new Hello-World server. Here, the resources
-     * of the server are initialized.
+     * Constructor for a new Proxy server.
      */
     public ProxyCoAP() throws SocketException {
-        
-        // provide an instance of a Hello-World resource
+        proxyCache = "";
+        resource = new CoapClient("coap://"); //address of the observable resource 
         add(new TemperatureResource());
+    }
+
+    public void observe(){
+        System.out.println("OBSERVE STARTED");
+
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+        
+        CoapObserveRelation relation = resource.observe(
+            new CoapHandler() {
+                @Override public void onLoad(CoapResponse response) {
+                    proxyCache = response.getResponseText();
+                    System.out.println("NOTIFICATION: " + proxyCache);
+                }
+                
+                @Override public void onError() {
+                    System.err.println("OBSERVING FAILED (press enter to exit)");
+                }
+            });
+        
+        // wait for user
+        try { 
+            br.readLine(); 
+        } catch (IOException e) { }
+        
+        System.out.println("CANCELLATION");
+        
+        relation.proactiveCancel();
     }
     
     /*
@@ -52,39 +64,26 @@ public class ProxyCoAP extends CoapServer {
             getAttributes().setTitle("Temperature Resource");
         }
         
+    /*
+    *   Definition of the GET handler in order to answer to the Client's requests
+    */
         @Override
-        public void handleGET(CoapExchange exchange) { //questa è la funzione che fa l'handle della GET proveniente dal client. 
-                                                        // Quindi qua dobbiamo far partire l'osservazione della risorsa e rispondere al client con la temperatura rilevata e notificarlo ogni volta che cambia
-            
-        // starting della observation della risorsa dei mote.
-        System.out.println("OBSERVE STARTED");
-
-        String content;
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); //se serve l'input da tastiera, altrimenti si toglie
-        CoapClient client = new CoapClient("coap://"); //indirizzo del border router (credo), da inserire
-
-        CoapObserveRelation relation = client.observe(
-                new CoapHandler() {
-                    @Override public void onLoad(CoapResponse response) {
-                        content = response.getResponseText();
-                        System.out.println("NOTIFICATION: " + content);
-                        exchange.respond(content);
-                    }
-                    
-                    @Override public void onError() {
-                        System.err.println("OBSERVING FAILED (press enter to exit)");
-                    }
-                });
-        
-        // wait for user
-        try { 
-            br.readLine(); 
-        } catch (IOException e) { }
-        
-        System.out.println("CANCELLATION");
-        
-        relation.proactiveCancel();
-
+        public void handleGET(CoapExchange exchange) { //
+            exchange.respond(proxyCache);
         }
     }
+
+    public static void main (String[] args) {
+        
+        try {
+            // create server
+            ProxyCoAP server = new ProxyCoAP();
+            server.start();
+            server.observe();
+            
+        } catch (SocketException e) {    
+            System.err.println("Failed to initialize server: " + e.getMessage());
+        }
+    }
+
 }
