@@ -12,7 +12,7 @@ public class ClientCoAP {
 		
 		URI uri = null;
 		try {
-			uri = new URI("coap://127.0.0.1:5683/helloWorld");
+			uri = new URI("coap://127.0.0.1:5683/TemperatureResource");
 		} catch (URISyntaxException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

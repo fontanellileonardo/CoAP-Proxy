@@ -21,7 +21,7 @@ public class ProxyCoAP extends CoapServer {
      */
     public ProxyCoAP() throws SocketException {
         proxyCache = "";
-        resource = new CoapClient("coap://"); //address of the observable resource 
+        resource = new CoapClient("coap://[abcd::c30c:0:0:2]:5683/test/value"); //address of the observable resource 
         add(new TemperatureResource());
     }
 
@@ -68,7 +68,7 @@ public class ProxyCoAP extends CoapServer {
     *   Definition of the GET handler in order to answer to the Client's requests
     */
         @Override
-        public void handleGET(CoapExchange exchange) { //
+        public void handleGET(CoapExchange exchange) {
             exchange.respond(proxyCache);
         }
     }
