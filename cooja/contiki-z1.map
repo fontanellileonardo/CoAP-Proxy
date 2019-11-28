@@ -2436,59 +2436,59 @@ LOAD /usr/lib/gcc/msp430/4.6.3/mcpu-430x/mmpy-16/libcrt0.a
                 0x000000000000f5d4                _unexpected_
                 0x000000000000f5d6                . = ALIGN (0x2)
 
-.rodata         0x000000000000f5d6      0x5ac
+.rodata         0x000000000000f5d6      0x5ae
                 0x000000000000f5d6                . = ALIGN (0x2)
  *(.rodata .rodata.* .gnu.linkonce.r.*)
- .rodata        0x000000000000f5d6      0x126 coap-node.co
-                0x000000000000f6b0                autostart_processes
-                0x000000000000f6fa                VAR_RANGE
- .rodata        0x000000000000f6fc      0x11a obj_z1/contiki-z1-main.o
- .rodata        0x000000000000f816       0xec contiki-z1.a(er-coap-engine.)
-                0x000000000000f870                coap_rest_implementation
- .rodata        0x000000000000f902       0x11 contiki-z1.a(er-coap-observe)
- .rodata        0x000000000000f913       0x19 contiki-z1.a(er-coap-res-wel)
- .rodata        0x000000000000f92c        0xc contiki-z1.a(rest-engine.o)
- .rodata        0x000000000000f938       0x70 contiki-z1.a(cc2420.o)
-                0x000000000000f96a                cc2420_aes_128_driver
-                0x000000000000f96e                cc2420_driver
- .rodata        0x000000000000f9a8        0x8 contiki-z1.a(sensors.o)
- .rodata        0x000000000000f9b0       0x2e contiki-z1.a(adxl345.o)
-                0x000000000000f9c0                adxl345
- .rodata        0x000000000000f9de       0x16 contiki-z1.a(tmp102.o)
-                0x000000000000f9ec                tmp102
- .rodata        0x000000000000f9f4        0xf contiki-z1.a(ctimer.o)
- .rodata        0x000000000000fa03        0xc contiki-z1.a(etimer.o)
- *fill*         0x000000000000fa0f        0x1 00
- .rodata        0x000000000000fa10       0x24 contiki-z1.a(sicslowpan.o)
-                0x000000000000fa1c                sicslowpan_driver
-                0x000000000000fa22                llprefix
-                0x000000000000fa24                unc_mxconf
-                0x000000000000fa28                unc_ctxconf
-                0x000000000000fa2c                unc_llconf
- .rodata        0x000000000000fa34       0x28 contiki-z1.a(uip-debug.o)
- .rodata        0x000000000000fa5c        0xd contiki-z1.a(tcpip.o)
- *fill*         0x000000000000fa69        0x1 00
- .rodata        0x000000000000fa6a        0x8 contiki-z1.a(linkaddr.o)
-                0x000000000000fa6a                linkaddr_null
- .rodata        0x000000000000fa72        0x6 contiki-z1.a(framer-802154.o)
-                0x000000000000fa72                framer_802154
- .rodata        0x000000000000fa78       0x14 contiki-z1.a(csma.o)
-                0x000000000000fa7e                csma_driver
- .rodata        0x000000000000fa8c       0x1c contiki-z1.a(contikimac.o)
-                0x000000000000fa98                contikimac_driver
- .rodata        0x000000000000faa8       0x10 contiki-z1.a(nullsec.o)
-                0x000000000000fab0                nullsec_driver
- .rodata        0x000000000000fab8       0xaf contiki-z1.a(er-coap.o)
- *fill*         0x000000000000fb67        0x1 00
- .rodata        0x000000000000fb68       0x10 contiki-z1.a(button-sensor.o)
-                0x000000000000fb70                button_sensor
- .rodata        0x000000000000fb78        0x2 contiki-z1.a(frame802154.o)
- .rodata        0x000000000000fb7a        0x7 /usr/lib/gcc/msp430/4.6.3/../../../../msp430/lib/mcpu-430x/mmpy-16/libc.a(vuprintf.o)
-                0x000000000000fb82                . = ALIGN (0x2)
- *fill*         0x000000000000fb81        0x1 00
-                0x000000000000fb82                _etext = .
+ .rodata        0x000000000000f5d6      0x128 coap-node.co
+                0x000000000000f6b2                autostart_processes
+                0x000000000000f6fc                VAR_RANGE
+ .rodata        0x000000000000f6fe      0x11a obj_z1/contiki-z1-main.o
+ .rodata        0x000000000000f818       0xec contiki-z1.a(er-coap-engine.)
+                0x000000000000f872                coap_rest_implementation
+ .rodata        0x000000000000f904       0x11 contiki-z1.a(er-coap-observe)
+ .rodata        0x000000000000f915       0x19 contiki-z1.a(er-coap-res-wel)
+ .rodata        0x000000000000f92e        0xc contiki-z1.a(rest-engine.o)
+ .rodata        0x000000000000f93a       0x70 contiki-z1.a(cc2420.o)
+                0x000000000000f96c                cc2420_aes_128_driver
+                0x000000000000f970                cc2420_driver
+ .rodata        0x000000000000f9aa        0x8 contiki-z1.a(sensors.o)
+ .rodata        0x000000000000f9b2       0x2e contiki-z1.a(adxl345.o)
+                0x000000000000f9c2                adxl345
+ .rodata        0x000000000000f9e0       0x16 contiki-z1.a(tmp102.o)
+                0x000000000000f9ee                tmp102
+ .rodata        0x000000000000f9f6        0xf contiki-z1.a(ctimer.o)
+ .rodata        0x000000000000fa05        0xc contiki-z1.a(etimer.o)
+ *fill*         0x000000000000fa11        0x1 00
+ .rodata        0x000000000000fa12       0x24 contiki-z1.a(sicslowpan.o)
+                0x000000000000fa1e                sicslowpan_driver
+                0x000000000000fa24                llprefix
+                0x000000000000fa26                unc_mxconf
+                0x000000000000fa2a                unc_ctxconf
+                0x000000000000fa2e                unc_llconf
+ .rodata        0x000000000000fa36       0x28 contiki-z1.a(uip-debug.o)
+ .rodata        0x000000000000fa5e        0xd contiki-z1.a(tcpip.o)
+ *fill*         0x000000000000fa6b        0x1 00
+ .rodata        0x000000000000fa6c        0x8 contiki-z1.a(linkaddr.o)
+                0x000000000000fa6c                linkaddr_null
+ .rodata        0x000000000000fa74        0x6 contiki-z1.a(framer-802154.o)
+                0x000000000000fa74                framer_802154
+ .rodata        0x000000000000fa7a       0x14 contiki-z1.a(csma.o)
+                0x000000000000fa80                csma_driver
+ .rodata        0x000000000000fa8e       0x1c contiki-z1.a(contikimac.o)
+                0x000000000000fa9a                contikimac_driver
+ .rodata        0x000000000000faaa       0x10 contiki-z1.a(nullsec.o)
+                0x000000000000fab2                nullsec_driver
+ .rodata        0x000000000000faba       0xaf contiki-z1.a(er-coap.o)
+ *fill*         0x000000000000fb69        0x1 00
+ .rodata        0x000000000000fb6a       0x10 contiki-z1.a(button-sensor.o)
+                0x000000000000fb72                button_sensor
+ .rodata        0x000000000000fb7a        0x2 contiki-z1.a(frame802154.o)
+ .rodata        0x000000000000fb7c        0x7 /usr/lib/gcc/msp430/4.6.3/../../../../msp430/lib/mcpu-430x/mmpy-16/libc.a(vuprintf.o)
+                0x000000000000fb84                . = ALIGN (0x2)
+ *fill*         0x000000000000fb83        0x1 00
+                0x000000000000fb84                _etext = .
 
-.data           0x0000000000001100      0x168 load address 0x000000000000fb82
+.data           0x0000000000001100      0x168 load address 0x000000000000fb84
                 0x0000000000001100                . = ALIGN (0x2)
                 0x0000000000001100                PROVIDE (__data_start, .)
  *(.data .data.* .gnu.linkonce.d.*)
@@ -2542,10 +2542,10 @@ LOAD /usr/lib/gcc/msp430/4.6.3/mcpu-430x/mmpy-16/libcrt0.a
  .data          0x0000000000001264        0x4 /usr/lib/gcc/msp430/4.6.3/../../../../msp430/lib/mcpu-430x/mmpy-16/libc.a(rand.o)
                 0x0000000000001268                . = ALIGN (0x2)
                 0x0000000000001268                _edata = .
-                0x000000000000fb82                PROVIDE (__data_load_start, LOADADDR (.data))
+                0x000000000000fb84                PROVIDE (__data_load_start, LOADADDR (.data))
                 0x0000000000000168                PROVIDE (__data_size, SIZEOF (.data))
 
-.bss            0x0000000000001268     0x1b1e load address 0x000000000000fcea
+.bss            0x0000000000001268     0x1b1e load address 0x000000000000fcec
                 0x0000000000001268                PROVIDE (__bss_start, .)
  *(.bss .bss.*)
  .bss           0x0000000000001268        0xe coap-node.co
@@ -2682,7 +2682,7 @@ LOAD /usr/lib/gcc/msp430/4.6.3/mcpu-430x/mmpy-16/libcrt0.a
                 0x0000000000002d86                PROVIDE (__bss_end, .)
                 0x0000000000001b1e                PROVIDE (__bss_size, SIZEOF (.bss))
 
-.noinit         0x0000000000002d86        0x2 load address 0x000000000000fcea
+.noinit         0x0000000000002d86        0x2 load address 0x000000000000fcec
                 0x0000000000002d86                PROVIDE (__noinit_start, .)
  *(.noinit .noinit.*)
  .noinit.crt0   0x0000000000002d86        0x2 /usr/lib/gcc/msp430/4.6.3/mcpu-430x/mmpy-16/libcrt0.a(__watchdog_support.o)
@@ -3112,6 +3112,6 @@ LOAD /usr/lib/gcc/msp430/4.6.3/mcpu-430x/mmpy-16/libcrt0.a
  *(.debug_ranges)
  .debug_ranges  0x0000000000000000       0x18 /usr/lib/gcc/msp430/4.6.3/../../../../msp430/lib/mcpu-430x/mmpy-16/libc.a(vuprintf.o)
                 0x0000000000003100                PROVIDE (__stack, (ORIGIN (ram) + 0x2000))
-                0x000000000000fb82                PROVIDE (__data_start_rom, _etext)
-                0x000000000000fcea                PROVIDE (__data_end_rom, (_etext + SIZEOF (.data)))
+                0x000000000000fb84                PROVIDE (__data_start_rom, _etext)
+                0x000000000000fcec                PROVIDE (__data_end_rom, (_etext + SIZEOF (.data)))
 OUTPUT(coap-node.z1 elf32-msp430)

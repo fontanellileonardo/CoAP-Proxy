@@ -29,7 +29,8 @@ void event_handler()
 void get_handler(void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
 
-	sprintf((char *) buffer, "{'temperature':%d}", value); //volendo si può anche aggiungere il parametro JSON { 'scale':'Celsius' }
+	//sprintf((char *) buffer, "{\"id\":\"%d\",\"temperature\":\"%d\"}", id, value); //volendo si può anche aggiungere il parametro JSON { 'scale':'Celsius' }
+	sprintf((char *) buffer, "{\"temperature\":\"%d\"}", value);
 	REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
 	REST.set_response_payload(response, buffer, strlen((char *) buffer));
 	
