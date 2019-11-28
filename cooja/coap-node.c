@@ -7,6 +7,7 @@
 #include "contiki-net.h"
 #include "rest-engine.h"
 #include <stdbool.h>
+#include "node-id.h"
 
 //make connect-router-cooja PREFIX="abcd::1/64"
 
@@ -20,7 +21,7 @@ void event_handler();
 void get_handler(void*, void*, uint8_t*, uint16_t, int32_t*);
 
 EVENT_RESOURCE(evt_resource, "title=\"Temperature\";rt=\"temperature\";obs", get_handler, NULL, NULL, NULL, event_handler);
-
+    
 void event_handler()
 {
 	REST.notify_subscribers(&evt_resource); //chiama in automatico la get_handler()
@@ -28,9 +29,8 @@ void event_handler()
 
 void get_handler(void* request, void* response, uint8_t *buffer, uint16_t preferred_size, int32_t *offset)
 {
-
-	//sprintf((char *) buffer, "{\"id\":\"%d\",\"temperature\":\"%d\"}", id, value); //volendo si può anche aggiungere il parametro JSON { 'scale':'Celsius' }
-	sprintf((char *) buffer, "{\"temperature\":\"%d\"}", value);
+	sprintf((char *) buffer, "{\"id\":\"%d\",\"temperature\":\"%d\"}", node_id, value); //volendo si può anche aggiungere il parametro JSON { 'scale':'Celsius' }
+	//sprintf((char *) buffer, "{\"temperature\":\"%d\"}", value);
 	REST.set_header_content_type(response, REST.type.APPLICATION_JSON);
 	REST.set_response_payload(response, buffer, strlen((char *) buffer));
 	
@@ -45,7 +45,7 @@ PROCESS(temperature_node, "Temperature-sensing Process");
 
 AUTOSTART_PROCESSES(&temperature_node);
 
-
+    
 PROCESS_THREAD(temperature_node, ev, data)
 {
 
@@ -63,9 +63,10 @@ PROCESS_THREAD(temperature_node, ev, data)
 	rest_init_engine();
 
 	rest_activate_resource(&evt_resource, "test/value");
- 
+	
+
 	while(1)
-	{
+	{  
 		PROCESS_WAIT_EVENT();
 
 		if(etimer_expired(&et))

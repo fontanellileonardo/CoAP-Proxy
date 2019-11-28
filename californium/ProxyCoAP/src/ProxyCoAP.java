@@ -10,7 +10,7 @@ import org.json.simple.parser.ParseException;
 public class ProxyCoAP extends CoapServer {
 
     private final int NUM_NODES = 5;
-    private String[] proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
+    private static String[] proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
 
 
 //constructor
@@ -36,6 +36,15 @@ public class ProxyCoAP extends CoapServer {
         }
     }
 
+    public static void writeCache(int index, String txt) { proxyCache[index] = txt; }
+
+    public static void printCache() {
+        System.out.print("[ ");
+        for(int j=0; j<proxyCache.length; j++)
+            System.out.print(proxyCache[j] + " ");
+
+        System.out.println(" ]");
+    }
     public static void main (String[] args) {
 
         final int NUM_NODES=5;
@@ -58,7 +67,14 @@ public class ProxyCoAP extends CoapServer {
                                 try {
                                     JSONObject jobj = (JSONObject) JSONValue.parseWithException(tmp);
 
-                                    System.out.println("NOTIFICATION (): " + jobj.get("temperature"));
+                                    String idStr = jobj.get("id").toString();
+                                    String temperature = jobj.get("temperature").toString();
+
+                                    int id = Integer.parseInt(idStr);
+
+                                    System.out.println("NOTIFICATION ("+id+"): " + temperature);
+                                    ProxyCoAP.writeCache((id-2), temperature);
+                                    ProxyCoAP.printCache();
                                 } catch(ParseException e) { e.printStackTrace(); }
                             }
 
