@@ -34,37 +34,42 @@ public class ClientCoAP {
 
 			if(rq.equals("GET") || rq.equals("get")){
 				System.out.println("GET request for a node");
-				System.out.print("Insert now the node at witch you want to send the request: ");
+				System.out.print("\tInsert now the node at witch you want to send the request: ");
 				try {
 					rq = br.readLine();
 				} catch (IOException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
-				//Controllo sull'id che stiamo inserendo, dobbiamo controllare se effettivamente stiamo inserendo l'id di un mote e non una stringa a caso -> magari regular expression
-				System.out.println("GET request for node: " + rq);
-				try {
-					uri = new URI("coap://127.0.0.1:5683/TemperatureResource:"+ rq);
-				} catch (URISyntaxException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				} // URI parameter of the request	
-				CoapClient client = new CoapClient(uri);
+				
+				if(rq.matches("^[0-9]*$")){
+					System.out.println("GET request for node: " + rq);
+					try {
+						uri = new URI("coap://127.0.0.1:5683/TemperatureResource:"+ rq);
+					} catch (URISyntaxException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} // URI parameter of the request	
+					CoapClient client = new CoapClient(uri);
 
-				CoapResponse response = client.get();
-				if (response!=null) {
-					
-					System.out.println(response.getCode());
-					System.out.println(response.getOptions());
-					System.out.println(response.getResponseText());
-					
-					System.out.println("\nADVANCED\n");
-					// access advanced API with access to more details through .advanced()
-					System.out.println(Utils.prettyPrint(response));
-					
-				} else {
-					System.out.println("No response received.");
-				}	
+					CoapResponse response = client.get();
+					if (response!=null) {
+						
+						System.out.println(response.getCode());
+						System.out.println(response.getOptions());
+						System.out.println(response.getResponseText());
+						
+						System.out.println("\nADVANCED\n");
+						// access advanced API with access to more details through .advanced()
+						System.out.println(Utils.prettyPrint(response));
+						
+					} else {
+						System.out.println("No response received.");
+					}	
+				}
+				else{
+					System.out.println("You have to specify an ID of a node, witch is an Integer number ");
+				}
 			}
 			else if(rq.equals("QUIT") || rq.equals("quit")){
 				System.out.println("Client quitted");
