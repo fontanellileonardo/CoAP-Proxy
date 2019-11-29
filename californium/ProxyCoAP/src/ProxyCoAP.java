@@ -1,7 +1,5 @@
-import java.io.*;
 import java.net.SocketException;
 
-import org.eclipse.californium.core.server.resources.CoapExchange;
 import org.eclipse.californium.core.*;
 
 import org.json.simple.*;
@@ -11,29 +9,17 @@ public class ProxyCoAP extends CoapServer {
 
     private final int NUM_NODES = 5;
     private static String[] proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
+    private TemperatureResource[] t;
 
-
-//constructor
+    //constructor
     public ProxyCoAP() throws SocketException {
         proxyCache = new String[NUM_NODES];
-        add(new TemperatureResource());
-    }
+        t = new TemperatureResource[NUM_NODES];
+        for(int i = 0; i < NUM_NODES; i++){
+            t[i] = new TemperatureResource(i);
+            this.add(new TemperatureResource(i));
+        }
 
-    //Definition of the Temperature Resource 
-    class TemperatureResource extends CoapResource {
-        
-        public TemperatureResource() {
-            // set resource identifier
-            super("TemperatureResource");
-            // set display name
-            getAttributes().setTitle("Temperature Resource");
-        }
-        
-    //Definition of the GET handler in order to answer to the Client's requests
-        @Override
-        public void handleGET(CoapExchange exchange) {
-            exchange.respond("Work in progress...");
-        }
     }
 
     public static void writeCache(int index, String txt) { proxyCache[index] = txt; }
@@ -42,19 +28,18 @@ public class ProxyCoAP extends CoapServer {
         System.out.print("[ ");
         for(int j=0; j<proxyCache.length; j++)
             System.out.print(proxyCache[j] + " ");
-
         System.out.println(" ]");
     }
-    public static void main (String[] args) {
 
-        final int NUM_NODES=5;
+    public static String getCache(int index){ return proxyCache[index]; }
+
+    public static void main (String[] args) {
+        final int NUM_NODES=5; //da sistemare e mettere in un file utils con tutte le costanti
         try {
             // create server
             ProxyCoAP server = new ProxyCoAP();
             server.start();
-
             CoapClient[] resource = new CoapClient[NUM_NODES];
-
             for(int i=0; i<NUM_NODES; i++) {
                 System.out.println("Ciclo " + i);
                 resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + (i+2) + "]:5683/test/value");
