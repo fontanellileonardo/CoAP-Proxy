@@ -16,6 +16,6 @@ import org.eclipse.californium.core.server.resources.CoapExchange;
     //Definition of the GET handler in order to answer to the Client's requests
         @Override
         public void handleGET(CoapExchange exchange) {
-            exchange.respond(ProxyCoAP.getCache(index));
+            exchange.respond("{ \"temperature\":\""+ProxyCoAP.getCache(index)+"\" }");
         }
     }

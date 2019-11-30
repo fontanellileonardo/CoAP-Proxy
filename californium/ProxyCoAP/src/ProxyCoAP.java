@@ -15,7 +15,7 @@ public class ProxyCoAP extends CoapServer {
     public ProxyCoAP() throws SocketException {
         proxyCache = new String[NUM_NODES];
         t = new TemperatureResource[NUM_NODES];
-        for(int i = 0; i < NUM_NODES; i++){
+        for(int i = 0; i < NUM_NODES; i++) {
             t[i] = new TemperatureResource(i);
             this.add(new TemperatureResource(i));
         }
