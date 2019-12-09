@@ -14,7 +14,7 @@
 bool debug = false; //true per attivare delle printf() di debug
 
 static int value = 21; //21 is the starting value
-int TIME; //globale perchè contiki del cazzo me lo resett
+int TIME; //globale perchè contiki lo resett
 const int VAR_RANGE = 3; //range di variazione della temperatura (in gradi)
 
 void event_handler();

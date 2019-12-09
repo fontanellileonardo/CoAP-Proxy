@@ -7,7 +7,7 @@ import org.json.simple.parser.ParseException;
 
 public class ProxyCoAP extends CoapServer {
 
-    private final int NUM_NODES = 22;
+    private final int NUM_NODES = 20;
     private static String[] proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
     private TemperatureResource[] t;
 
@@ -47,9 +47,18 @@ public class ProxyCoAP extends CoapServer {
             server.start();
             
             CoapClient[] resource = new CoapClient[server.getNumNodes()];
+            int j = 10;
             for(int i=0; i<server.getNumNodes(); i++) {
             	
-            	resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + (i+2) + "]:5683/test/value");
+            	if(i>=8 && i<=13) {
+            		String hex=Integer.toHexString(i+2);
+            		//System.out.println(hex);
+            		resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
+            	} else {
+            		if(i>13) { resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + j + "]:5683/test/value"); j++; }
+            		else resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + (i+2) + "]:5683/test/value");
+            		//System.out.println(i+2); 
+            		}
             	resource[i].observe(
                         new CoapHandler() {
                             @Override
@@ -69,6 +78,7 @@ public class ProxyCoAP extends CoapServer {
                                     System.out.println("NOTIFICATION ("+id+"): " + temperature);
                                     ProxyCoAP.writeCache((id-2), temperature);
                                     ProxyCoAP.printCache();
+                                    System.out.println("\n");
                                     
                                 } catch(ParseException e) { e.printStackTrace(); }
                             }
