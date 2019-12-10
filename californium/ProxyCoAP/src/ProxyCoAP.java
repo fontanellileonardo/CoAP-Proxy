@@ -36,11 +36,24 @@ public class ProxyCoAP extends CoapServer {
     }
 
     public static String getCache(int index){ return proxyCache[index]; }
-    
+
+    public static int getNum(String ch){
+        int num = 0;
+        switch(ch){
+            case "a": num = 10; break;
+            case "b": num = 11; break;
+            case "c": num = 12; break;
+            case "d": num = 13; break;
+            case "e": num = 14; break;
+            case "f": num = 15; break;
+            default: num = Integer.parseInt(ch);
+        }
+        return num;
+    }
+
     public int getNumNodes() { return NUM_NODES; }
 
     public static void main (String[] args) {
-        //final int NUM_NODES=5; //da sistemare e mettere in un file utils con tutte le costanti
         try {
             // create server
             ProxyCoAP server = new ProxyCoAP();
@@ -69,14 +82,14 @@ public class ProxyCoAP extends CoapServer {
                                 try {
                                 
                                     JSONObject jobj = (JSONObject) JSONValue.parseWithException(tmp);
-
                                     String idStr = jobj.get("id").toString();
+                                    int num = getNum(idStr);
                                     String temperature = jobj.get("temperature").toString();
 
                                     int id = Integer.parseInt(idStr);
 
-                                    System.out.println("NOTIFICATION ("+id+"): " + temperature);
-                                    ProxyCoAP.writeCache((id-2), temperature);
+                                    System.out.println("NOTIFICATION ("+num+"): " + temperature);
+                                    ProxyCoAP.writeCache((num-2), temperature);
                                     ProxyCoAP.printCache();
                                     System.out.println("\n");
                                     
