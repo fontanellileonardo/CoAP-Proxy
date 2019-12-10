@@ -63,7 +63,10 @@ public class ProxyCoAP extends CoapServer {
             int j = 10;
             for(int i=0; i<server.getNumNodes(); i++) {
             	
-            	if(i>=8 && i<=13) {
+            	String hex=Integer.toHexString(i+2);
+            	System.out.println("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
+            	resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
+            	/*if(i>=8 && i<=13) {
             		String hex=Integer.toHexString(i+2);
             		//System.out.println(hex);
             		resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
@@ -71,7 +74,7 @@ public class ProxyCoAP extends CoapServer {
             		if(i>13) { resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + j + "]:5683/test/value"); j++; }
             		else resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + (i+2) + "]:5683/test/value");
             		//System.out.println(i+2); 
-            		}
+            		}*/
             	resource[i].observe(
                         new CoapHandler() {
                             @Override
@@ -82,14 +85,18 @@ public class ProxyCoAP extends CoapServer {
                                 try {
                                 
                                     JSONObject jobj = (JSONObject) JSONValue.parseWithException(tmp);
-                                    String idStr = jobj.get("id").toString();
-                                    int num = getNum(idStr);
+                                    //String idStr = jobj.get("id").toString();
+                                    //int num = Integer.parseInt(idStr, 16); //getNum(idStr);
+                                    //System.out.println("DEBUG: Node ID: " + idStr);
+                                    
                                     String temperature = jobj.get("temperature").toString();
 
-                                    int id = Integer.parseInt(idStr);
-
-                                    System.out.println("NOTIFICATION ("+num+"): " + temperature);
-                                    ProxyCoAP.writeCache((num-2), temperature);
+                                    int id = Integer.parseInt(jobj.get("id").toString());
+                                    System.out.println("NOTIFICATION from node "+id+" (0x"+Integer.toHexString(id)+"): " + temperature);
+                                    
+                                    ProxyCoAP.writeCache((id-2), temperature);
+                                    System.out.println("Data saved in position "+(id-2));
+                                    
                                     ProxyCoAP.printCache();
                                     System.out.println("\n");
                                     

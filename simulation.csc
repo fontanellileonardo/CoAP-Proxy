@@ -82,8 +82,8 @@
       <breakpoints />
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>56.050215488170366</x>
-        <y>67.51547516352105</y>
+        <x>41.02009656558999</x>
+        <y>81.66146944359669</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -172,8 +172,8 @@
       <breakpoints />
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>98.44489793783251</x>
-        <y>96.36463425009346</y>
+        <x>126.14747006964731</x>
+        <y>108.15296281682316</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -298,8 +298,8 @@
       <breakpoints />
       <interface_config>
         org.contikios.cooja.interfaces.Position
-        <x>66.58350826091797</x>
-        <y>45.299797657977514</y>
+        <x>43.00685112745856</x>
+        <y>32.92205266291133</y>
         <z>0.0</z>
       </interface_config>
       <interface_config>
@@ -438,42 +438,6 @@
       </interface_config>
       <motetype_identifier>z12</motetype_identifier>
     </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        org.contikios.cooja.interfaces.Position
-        <x>69.50562455303366</x>
-        <y>80.42355463716525</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        org.contikios.cooja.mspmote.interfaces.MspClock
-        <deviation>1.0</deviation>
-      </interface_config>
-      <interface_config>
-        org.contikios.cooja.mspmote.interfaces.MspMoteID
-        <id>22</id>
-      </interface_config>
-      <motetype_identifier>z12</motetype_identifier>
-    </mote>
-    <mote>
-      <breakpoints />
-      <interface_config>
-        org.contikios.cooja.interfaces.Position
-        <x>93.30634707392836</x>
-        <y>53.10688979670623</y>
-        <z>0.0</z>
-      </interface_config>
-      <interface_config>
-        org.contikios.cooja.mspmote.interfaces.MspClock
-        <deviation>1.0</deviation>
-      </interface_config>
-      <interface_config>
-        org.contikios.cooja.mspmote.interfaces.MspMoteID
-        <id>23</id>
-      </interface_config>
-      <motetype_identifier>z12</motetype_identifier>
-    </mote>
   </simulation>
   <plugin>
     org.contikios.cooja.plugins.SimControl
@@ -536,8 +500,6 @@
       <mote>18</mote>
       <mote>19</mote>
       <mote>20</mote>
-      <mote>21</mote>
-      <mote>22</mote>
       <showRadioRXTX />
       <showRadioHW />
       <showLEDs />
