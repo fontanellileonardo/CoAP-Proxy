@@ -1,5 +1,5 @@
 import java.net.SocketException;
-
+import java.io.*;
 import org.eclipse.californium.core.*;
 
 import org.json.simple.*;
@@ -7,13 +7,14 @@ import org.json.simple.parser.ParseException;
 
 public class ProxyCoAP extends CoapServer {
 
-    private final int NUM_NODES = 20;
+    private int NUM_NODES;
     private static String[] proxyCache; //cache of the Server where the temperature value will be stored - Maybe it has to become a list in order to store the value of every sensor
     private TemperatureResource[] t;
 
     //constructor
-    public ProxyCoAP() throws SocketException {
+    public ProxyCoAP(int nn) throws SocketException {
     
+    	this.NUM_NODES = nn;
     	proxyCache = new String[NUM_NODES];
     	t = new TemperatureResource[NUM_NODES];
     	
@@ -32,49 +33,38 @@ public class ProxyCoAP extends CoapServer {
         for(int j=0; j<proxyCache.length; j++)
             System.out.print(proxyCache[j] + " ");
             
-        System.out.println(" ]");
+        System.out.println("]");
     }
 
     public static String getCache(int index){ return proxyCache[index]; }
 
-    public static int getNum(String ch){
-        int num = 0;
-        switch(ch){
-            case "a": num = 10; break;
-            case "b": num = 11; break;
-            case "c": num = 12; break;
-            case "d": num = 13; break;
-            case "e": num = 14; break;
-            case "f": num = 15; break;
-            default: num = Integer.parseInt(ch);
-        }
-        return num;
-    }
-
     public int getNumNodes() { return NUM_NODES; }
 
     public static void main (String[] args) {
+    	
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	int NUM_NODES=0;
+    	
+    	System.out.print("\033[H\033[2J");  //"clear" the screen
+	System.out.flush();
+    	System.out.print("\nPlease insert the NUM_NODES: ");
+    	try {
+		NUM_NODES = Integer.parseInt(br.readLine());
+	} catch (IOException e) { e.printStackTrace(); }
+	
         try {
             // create server
-            ProxyCoAP server = new ProxyCoAP();
+            ProxyCoAP server = new ProxyCoAP(NUM_NODES);
             server.start();
             
             CoapClient[] resource = new CoapClient[server.getNumNodes()];
-            int j = 10;
+
             for(int i=0; i<server.getNumNodes(); i++) {
             	
             	String hex=Integer.toHexString(i+2);
             	System.out.println("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
+            	
             	resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
-            	/*if(i>=8 && i<=13) {
-            		String hex=Integer.toHexString(i+2);
-            		//System.out.println(hex);
-            		resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + hex + "]:5683/test/value");
-            	} else {
-            		if(i>13) { resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + j + "]:5683/test/value"); j++; }
-            		else resource[i] = new CoapClient("coap://[abcd::c30c:0:0:" + (i+2) + "]:5683/test/value");
-            		//System.out.println(i+2); 
-            		}*/
             	resource[i].observe(
                         new CoapHandler() {
                             @Override
@@ -84,11 +74,7 @@ public class ProxyCoAP extends CoapServer {
 
                                 try {
                                 
-                                    JSONObject jobj = (JSONObject) JSONValue.parseWithException(tmp);
-                                    //String idStr = jobj.get("id").toString();
-                                    //int num = Integer.parseInt(idStr, 16); //getNum(idStr);
-                                    //System.out.println("DEBUG: Node ID: " + idStr);
-                                    
+                                    JSONObject jobj = (JSONObject) JSONValue.parseWithException(tmp);                                    
                                     String temperature = jobj.get("temperature").toString();
 
                                     int id = Integer.parseInt(jobj.get("id").toString());
@@ -98,14 +84,14 @@ public class ProxyCoAP extends CoapServer {
                                     System.out.println("Data saved in position "+(id-2));
                                     
                                     ProxyCoAP.printCache();
-                                    System.out.println("\n");
+                                    System.out.println("");
                                     
                                 } catch(ParseException e) { e.printStackTrace(); }
                             }
 
                             @Override
                             public void onError() {
-                                System.err.println("OBSERVING FAILED (press enter to exit)");
+                                System.err.println("OBSERVING FAILED...");
                             }
                         });
             }
