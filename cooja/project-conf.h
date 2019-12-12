@@ -11,7 +11,7 @@
 #define NBR_TABLE_CONF_MAX_NEIGHBORS 10
 
 #undef UIP_CONF_MAX_ROUTES // Set the max number of routes handled by the node
-#define UIP_CONF_MAX_ROUTES 10
+#define UIP_CONF_MAX_ROUTES 20
 
 #undef UIP_CONF_BUFFER_SIZE // Set the amount of memory reserved to the uIP packet buffer
 #define UIP_CONF_BUFFER_SIZE 280

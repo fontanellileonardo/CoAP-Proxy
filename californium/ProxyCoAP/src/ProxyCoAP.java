@@ -28,7 +28,7 @@ public class ProxyCoAP extends CoapServer {
     public static void writeCache(int index, String txt) { proxyCache[index] = txt; }
 
     public static void printCache() {
-    
+        
         System.out.print("[ ");
         for(int j=0; j<proxyCache.length; j++)
             System.out.print(proxyCache[j] + " ");

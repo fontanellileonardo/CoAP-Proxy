@@ -537,4 +537,3 @@
     <location_y>30</location_y>
   </plugin>
 </simconf>
-
