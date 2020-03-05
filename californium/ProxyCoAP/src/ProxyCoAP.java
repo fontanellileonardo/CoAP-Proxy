@@ -91,7 +91,7 @@ public class ProxyCoAP extends CoapServer {
 
                             @Override
                             public void onError() {
-                                System.err.println("OBSERVING FAILED...");
+                                System.err.println("[ERROR] Observing Failed. Retrying...");
                             }
                         });
             }

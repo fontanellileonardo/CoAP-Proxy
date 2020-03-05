@@ -16,4 +16,13 @@
 #undef UIP_CONF_BUFFER_SIZE // Set the amount of memory reserved to the uIP packet buffer
 #define UIP_CONF_BUFFER_SIZE 280
 
+#undef RPL_CONF_DIO_REDUNDANCY
+#define RPL_CONF_DIO_REDUNDANCY 1
+
+#undef RPL_CONF_DIO_INTERVAL_MIN
+#define RPL_CONF_DIO_INTERVAL_MIN 12
+
+#undef RPL_CONF_DIO_INTERVAL_DOUBLINGS
+#define RPL_CONF_DIO_INTERVAL_DOUBLINGS 4
+
 #endif
