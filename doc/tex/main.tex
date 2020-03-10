@@ -9,6 +9,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Loading packages that alter the style
 \usepackage[]{graphicx}
 \usepackage[]{color}
+\usepackage{listings}
+\usepackage{float}
 \usepackage{alltt}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
@@ -138,7 +140,45 @@ A node is implemented with the Contiki environment (C language) using the Z1 mot
 With the purpose of simulation, the temperature value is randomly generated and sent to the Proxy every time that a variation is detected.
 The REST paradigm allows to keep the temperature value as a CoAP resource.
 
-\chapter{Execution Tutorial}\label{chapt:doe}
+\chapter{Execution Tutorial}
+In order to execute the project it is necessary to open the Cooja simulator on Contiki. Once the simulator is opened, we're now able to add the nodes and deploy the network. First of all the RPL border router is added to the network, then we can insert the other regular nodes. The nodes inserted in the WSN are around 20-30.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.4]{network.png}
+\caption{WSN deployed with Cooja simulator}
+\end{figure}
+
+It is necessary to define the Serial Socket port for the Border Router, by selecting \textit{Tools}, then \textit{Serial Socket (SERVER)} and finally select the Border Router and the listen port.
+It is now neccessary to tun \textit{Tunslip6} by inserting the following command in a terminal:
+\begin{lstlisting}
+make connect-router-cooja PREFIX="abcd::1/64"
+\end{lstlisting}
+This is for creating the connection between the mote (border router) and the host.
+It is reccomended now to start the simulation in Cooja and give some time before proceeding in order to create all the routes.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.2]{simulation.png}
+\caption{The running simulation in Cooja}
+\end{figure}
+
+Now it is possible to run the Proxy and the Client.
+When the Proxy starts, it asks as an input the number of nodes deployed in the network. Once the number is inserted, it will start with the "observe" operation to the nodes and will report the temperature value of everyone.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{proxy.png}
+\caption{Sample of a Proxy execution with 25 nodes deployed}
+\end{figure}
+
+The client, at runtime, can request the temperature value of every node with a GET operation and the Proxy will reply by taking the last received value from the cache.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.4]{client.png}
+\caption{Sample of a Client request for a temperature value}
+\end{figure}
 
 
 
