@@ -1,19 +1,21 @@
-Mar 26 11:14:32.842 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
-Mar 26 11:14:32.842 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 50505.
-Mar 26 11:14:32.844 HYPERVISOR: exec_cmd: hypervisor version 
-Mar 26 11:14:32.845 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
-Mar 26 11:14:32.845 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
-Mar 26 11:14:32.845 HYPERVISOR: exec_cmd: ethsw create SW-A 
-Mar 26 11:14:35.437 HYPERVISOR: exec_cmd: nio create_udp udp-664d3d46-1518-49c3-a7a4-9b2635dce909 10000 127.0.0.1 10001 
-Mar 26 11:14:35.437 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-664d3d46-1518-49c3-a7a4-9b2635dce909 
-Mar 26 11:14:35.456 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-664d3d46-1518-49c3-a7a4-9b2635dce909 1 
-Mar 26 11:14:35.543 HYPERVISOR: exec_cmd: nio create_udp udp-d28a8747-a426-43ab-bed7-717d90083815 10003 127.0.0.1 10002 
-Mar 26 11:14:35.544 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-d28a8747-a426-43ab-bed7-717d90083815 
-Mar 26 11:14:35.562 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-d28a8747-a426-43ab-bed7-717d90083815 1 
-Mar 26 11:14:35.637 HYPERVISOR: exec_cmd: nio create_udp udp-ebcabdcd-48a1-4e1e-aef5-a4f251a16f4a 10005 127.0.0.1 10004 
-Mar 26 11:14:35.637 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-ebcabdcd-48a1-4e1e-aef5-a4f251a16f4a 
-Mar 26 11:14:35.655 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-ebcabdcd-48a1-4e1e-aef5-a4f251a16f4a 1 
-Mar 26 12:12:58.635 HYPERVISOR: exec_cmd: ethsw delete SW-A 
-Mar 26 12:12:58.720 HYPERVISOR: exec_cmd: hypervisor stop 
-Mar 26 12:12:58.787 HYPERVISOR: Stopped.
-Mar 26 12:12:58.787 GENERAL: reset done.
+Mar 27 10:48:36.154 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
+Mar 27 10:48:36.154 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 55185.
+Mar 27 10:48:36.166 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 27 10:48:36.167 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
+Mar 27 10:48:36.167 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
+Mar 27 10:48:36.168 HYPERVISOR: exec_cmd: ethsw create SW-A 
+Mar 27 10:48:41.144 HYPERVISOR: exec_cmd: nio create_udp udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 10000 127.0.0.1 10001 
+Mar 27 10:48:41.145 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 
+Mar 27 10:48:41.161 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 1 
+Mar 27 10:48:41.330 HYPERVISOR: exec_cmd: nio create_udp udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 10003 127.0.0.1 10002 
+Mar 27 10:48:41.331 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 
+Mar 27 10:48:41.346 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 1 
+Mar 27 10:48:41.523 HYPERVISOR: exec_cmd: nio create_udp udp-312b9035-3bd8-4298-bb0b-f30ae957a779 10005 127.0.0.1 10004 
+Mar 27 10:48:41.524 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-312b9035-3bd8-4298-bb0b-f30ae957a779 
+Mar 27 10:48:41.529 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-312b9035-3bd8-4298-bb0b-f30ae957a779 1 
+Mar 27 11:28:45.262 HYPERVISOR: exec_cmd: nio bind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 capture 
+Mar 27 11:28:45.262 HYPERVISOR: exec_cmd: nio setup_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 en10mb /home/student/Desktop/anaws/task3/t3/tmp/captures/SW-A_Ethernet0_to_R1_Ethernet00.pcap 
+Mar 27 11:35:43.389 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 
+Mar 27 11:35:47.872 HYPERVISOR: exec_cmd: nio bind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 capture 
+Mar 27 11:35:47.873 HYPERVISOR: exec_cmd: nio setup_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 en10mb /home/student/Desktop/anaws/task3/t3/tmp/captures/SW-A_Ethernet0_to_R1_Ethernet00.pcap 
+Mar 27 11:37:29.787 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 
