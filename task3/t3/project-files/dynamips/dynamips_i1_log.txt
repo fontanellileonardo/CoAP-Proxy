@@ -19,3 +19,7 @@ Mar 27 11:35:43.389 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b
 Mar 27 11:35:47.872 HYPERVISOR: exec_cmd: nio bind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 capture 
 Mar 27 11:35:47.873 HYPERVISOR: exec_cmd: nio setup_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 en10mb /home/student/Desktop/anaws/task3/t3/tmp/captures/SW-A_Ethernet0_to_R1_Ethernet00.pcap 
 Mar 27 11:37:29.787 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 
+Mar 27 13:56:45.613 HYPERVISOR: exec_cmd: ethsw delete SW-A 
+Mar 27 13:56:45.657 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 27 13:56:45.714 HYPERVISOR: Stopped.
+Mar 27 13:56:45.714 GENERAL: reset done.
