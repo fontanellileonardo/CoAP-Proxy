@@ -1,25 +1,15 @@
-Mar 27 10:48:36.154 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
-Mar 27 10:48:36.154 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 55185.
-Mar 27 10:48:36.166 HYPERVISOR: exec_cmd: hypervisor version 
-Mar 27 10:48:36.167 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
-Mar 27 10:48:36.167 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
-Mar 27 10:48:36.168 HYPERVISOR: exec_cmd: ethsw create SW-A 
-Mar 27 10:48:41.144 HYPERVISOR: exec_cmd: nio create_udp udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 10000 127.0.0.1 10001 
-Mar 27 10:48:41.145 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 
-Mar 27 10:48:41.161 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 1 
-Mar 27 10:48:41.330 HYPERVISOR: exec_cmd: nio create_udp udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 10003 127.0.0.1 10002 
-Mar 27 10:48:41.331 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 
-Mar 27 10:48:41.346 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-22ee9e7b-0b02-4401-8151-ebe7e45aa03a 1 
-Mar 27 10:48:41.523 HYPERVISOR: exec_cmd: nio create_udp udp-312b9035-3bd8-4298-bb0b-f30ae957a779 10005 127.0.0.1 10004 
-Mar 27 10:48:41.524 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-312b9035-3bd8-4298-bb0b-f30ae957a779 
-Mar 27 10:48:41.529 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-312b9035-3bd8-4298-bb0b-f30ae957a779 1 
-Mar 27 11:28:45.262 HYPERVISOR: exec_cmd: nio bind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 capture 
-Mar 27 11:28:45.262 HYPERVISOR: exec_cmd: nio setup_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 en10mb /home/student/Desktop/anaws/task3/t3/tmp/captures/SW-A_Ethernet0_to_R1_Ethernet00.pcap 
-Mar 27 11:35:43.389 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 
-Mar 27 11:35:47.872 HYPERVISOR: exec_cmd: nio bind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 capture 
-Mar 27 11:35:47.873 HYPERVISOR: exec_cmd: nio setup_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 en10mb /home/student/Desktop/anaws/task3/t3/tmp/captures/SW-A_Ethernet0_to_R1_Ethernet00.pcap 
-Mar 27 11:37:29.787 HYPERVISOR: exec_cmd: nio unbind_filter udp-77f086d3-0900-4b67-9d51-2db49c1f7b88 2 
-Mar 27 13:56:45.613 HYPERVISOR: exec_cmd: ethsw delete SW-A 
-Mar 27 13:56:45.657 HYPERVISOR: exec_cmd: hypervisor stop 
-Mar 27 13:56:45.714 HYPERVISOR: Stopped.
-Mar 27 13:56:45.714 GENERAL: reset done.
+Mar 29 13:11:04.151 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
+Mar 29 13:11:04.151 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 39891.
+Mar 29 13:11:04.161 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 29 13:11:04.161 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
+Mar 29 13:11:04.161 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
+Mar 29 13:11:04.162 HYPERVISOR: exec_cmd: ethsw create SW-A 
+Mar 29 13:11:05.854 HYPERVISOR: exec_cmd: nio create_udp udp-6b9bc153-4093-4664-9495-f213e98c8ba0 10000 127.0.0.1 10001 
+Mar 29 13:11:05.854 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-6b9bc153-4093-4664-9495-f213e98c8ba0 
+Mar 29 13:11:05.870 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-6b9bc153-4093-4664-9495-f213e98c8ba0 1 
+Mar 29 13:11:05.972 HYPERVISOR: exec_cmd: nio create_udp udp-eff88353-af62-41af-8247-032158a916fa 10003 127.0.0.1 10002 
+Mar 29 13:11:05.972 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-eff88353-af62-41af-8247-032158a916fa 
+Mar 29 13:11:05.995 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-eff88353-af62-41af-8247-032158a916fa 1 
+Mar 29 13:11:06.079 HYPERVISOR: exec_cmd: nio create_udp udp-f93f0929-b476-44dd-b1c1-781444817eb4 10005 127.0.0.1 10004 
+Mar 29 13:11:06.080 HYPERVISOR: exec_cmd: ethsw add_nio SW-A udp-f93f0929-b476-44dd-b1c1-781444817eb4 
+Mar 29 13:11:06.098 HYPERVISOR: exec_cmd: ethsw set_access_port SW-A udp-f93f0929-b476-44dd-b1c1-781444817eb4 1 
