@@ -1,12 +1,16 @@
-Mar 30 08:53:22.451 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
-Mar 30 08:53:22.451 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 33049.
-Mar 30 08:53:22.463 HYPERVISOR: exec_cmd: hypervisor version 
-Mar 30 08:53:22.463 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
-Mar 30 08:53:22.463 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
-Mar 30 08:53:22.463 HYPERVISOR: exec_cmd: ethsw create SW-C 
-Mar 30 08:53:25.042 HYPERVISOR: exec_cmd: nio create_udp udp-81db5081-ebbd-407c-96d4-1a7cb46f7d9e 10007 127.0.0.1 10006 
-Mar 30 08:53:25.042 HYPERVISOR: exec_cmd: ethsw add_nio SW-C udp-81db5081-ebbd-407c-96d4-1a7cb46f7d9e 
-Mar 30 08:53:25.061 HYPERVISOR: exec_cmd: ethsw set_access_port SW-C udp-81db5081-ebbd-407c-96d4-1a7cb46f7d9e 1 
-Mar 30 08:53:25.133 HYPERVISOR: exec_cmd: nio create_udp udp-6d2e6339-c49d-4609-afd9-a6d557f49071 10008 127.0.0.1 10009 
-Mar 30 08:53:25.134 HYPERVISOR: exec_cmd: ethsw add_nio SW-C udp-6d2e6339-c49d-4609-afd9-a6d557f49071 
-Mar 30 08:53:25.142 HYPERVISOR: exec_cmd: ethsw set_access_port SW-C udp-6d2e6339-c49d-4609-afd9-a6d557f49071 1 
+Mar 31 13:40:04.395 HYPERVISOR: Release 0.2.18-amd64/Linux (tag 2018033112)
+Mar 31 13:40:04.395 HYPERVISOR: Started on IP = 127.0.0.1, TCP port = 43155.
+Mar 31 13:40:04.399 HYPERVISOR: exec_cmd: hypervisor version 
+Mar 31 13:40:04.399 HYPERVISOR: exec_cmd: hypervisor working_dir /home/student/Desktop/anaws/task3/t3/project-files/dynamips 
+Mar 31 13:40:04.400 GENERAL: working_dir=/home/student/Desktop/anaws/task3/t3/project-files/dynamips
+Mar 31 13:40:04.400 HYPERVISOR: exec_cmd: ethsw create SW-C 
+Mar 31 13:40:07.003 HYPERVISOR: exec_cmd: nio create_udp udp-40ab6cb3-db90-4c23-b4a5-70be9878227e 10007 127.0.0.1 10006 
+Mar 31 13:40:07.003 HYPERVISOR: exec_cmd: ethsw add_nio SW-C udp-40ab6cb3-db90-4c23-b4a5-70be9878227e 
+Mar 31 13:40:07.005 HYPERVISOR: exec_cmd: ethsw set_access_port SW-C udp-40ab6cb3-db90-4c23-b4a5-70be9878227e 1 
+Mar 31 13:40:07.053 HYPERVISOR: exec_cmd: nio create_udp udp-ab413ab3-cd56-4e09-a8c4-97350780e1a2 10008 127.0.0.1 10009 
+Mar 31 13:40:07.053 HYPERVISOR: exec_cmd: ethsw add_nio SW-C udp-ab413ab3-cd56-4e09-a8c4-97350780e1a2 
+Mar 31 13:40:07.066 HYPERVISOR: exec_cmd: ethsw set_access_port SW-C udp-ab413ab3-cd56-4e09-a8c4-97350780e1a2 1 
+Mar 31 13:44:02.436 HYPERVISOR: exec_cmd: ethsw delete SW-C 
+Mar 31 13:44:02.499 HYPERVISOR: exec_cmd: hypervisor stop 
+Mar 31 13:44:02.920 HYPERVISOR: Stopped.
+Mar 31 13:44:02.920 GENERAL: reset done.
