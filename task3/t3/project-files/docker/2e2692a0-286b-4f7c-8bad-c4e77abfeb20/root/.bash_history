@@ -7,3 +7,4 @@ iperf -u -s -i 1
 iperf -u -c 192.168.1.2 -b 2M
 iperf -u -s -i -1
 iperf -u -s -i 1
+iperf -s -u

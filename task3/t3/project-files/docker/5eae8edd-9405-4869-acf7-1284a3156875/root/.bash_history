@@ -28,3 +28,8 @@ iperf -c 192.168.101.2 -i 1
 iperf -u -c 192.168.101.2 -i 1 -b 100k
 iperf -s -u
 iperf -u -c 192.168.101.2 -i 1
+iperf -u -c 192.168.101.2 -b 1M -i 1 -f
+iperf -u -c 192.168.101.2 -b 1M
+iperf -u -c 192.168.101.2 -b 1.5M
+iperf -u -c 192.168.101.2 -b 2M
+iperf -u -c 192.168.101.2 -b 1M
